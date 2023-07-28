@@ -24,7 +24,7 @@ if lowercaseDepartmentName == 'marketing' or lowercaseDepartmentName == 'account
             while (counterDigit < 20): # generate each character
                 newname += random.choice(allCharactersAndNumbers)
                 counterDigit += 1
-            print('EC2', ec2NumberBeingCreated, 'Name: ', newname)
+            print('EC2', ec2NumberBeingCreated, 'Name: ', newname.capitalize())
             ec2NumberBeingCreated += 1
             numberOfEc2Instances -= 1
             newname = departmentName + "-"
