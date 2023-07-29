@@ -8,7 +8,10 @@ def split_and_join(line):
             newstring += old[i].join("-")
     return newstring
 
-if __name__ == '__main__':
-    line = input()
-    result = split_and_join(line)
-    print(result)
+# if __name__ == '__main__':
+#     line = input()
+#     result = split_and_join(line)
+#     print(result)
+
+a = "this is a string"
+print (split_and_join(a))
