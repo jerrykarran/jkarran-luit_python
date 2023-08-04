@@ -1,26 +1,16 @@
 import os     # import the OS module
-import pprint # import this for print formatting
-directoryData = {}
 
-def printDirectoryData():
+directoryDictionary = {}
+
+def printDirectoryData(path='os.getcwd()'):
     directoryList = os.listdir()
-    for currentFileName in directoryList:
-        currentFilesize = os.path.getsize(currentFileName)
-        directoryData[currentFileName] = currentFilesize
-    pprint.pprint(directoryData)
     
+    for currentFileName in directoryList: # each file in the directory
+        currentFilePath = os.path.abspath(currentFileName)
+        currentFileSize = os.path.getsize(currentFileName) # get the size
+        directoryDictionary[currentFilePath] = currentFileSize # creating an entry in the dictionary
+
+    for eachEntry in directoryDictionary:
+        print("{'path': '" + eachEntry + "', 'size': " + str(directoryDictionary[eachEntry]) + '}')
+        
 printDirectoryData()
-
-# friday
-
-# def printDirectoryData(path='os.getcwd()'):
-#     if path == 'os.getcwd()':
-#         directoryList = os.listdir()
-#     else:
-#         directoryList = os.listdir(path)
-#     for currentFileName in directoryList:
-#         currentFilesize = os.path.getsize(currentFileName)
-#         directoryData[currentFileName] = currentFilesize
-#     pprint.pprint(directoryData)
-    
-# printDirectoryData('/Users/jerry/Desktop')
