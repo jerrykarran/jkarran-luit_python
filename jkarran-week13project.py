@@ -10,7 +10,7 @@ def printDirectoryData(path='os.getcwd()'):
         currentFileSize = os.path.getsize(currentFileName) # get the size
         directoryDictionary[currentFilePath] = currentFileSize # creating an entry in the dictionary
 
-    for eachEntry in directoryDictionary:
-        print("{'path': '" + eachEntry + "', 'size': " + str(directoryDictionary[eachEntry]) + '}')
+    for p, s in directoryDictionary.items():
+        print("{'path': '" + p + "', 'size': " + str(s) + '}')
         
 printDirectoryData()
