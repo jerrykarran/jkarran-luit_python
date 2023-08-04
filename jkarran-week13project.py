@@ -11,7 +11,7 @@ def printDirectoryData():
     
 printDirectoryData()
 
-
+# friday
 
 # def printDirectoryData(path='os.getcwd()'):
 #     if path == 'os.getcwd()':
