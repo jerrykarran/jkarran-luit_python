@@ -1,6 +1,6 @@
 import os     # import the OS module
-# import pprint # import this for print formatting
-directoryData = {}
+
+directoryDictionary = {}
 
 def printDirectoryData(path='os.getcwd()'):
     directoryList = os.listdir()
@@ -8,15 +8,12 @@ def printDirectoryData(path='os.getcwd()'):
     for currentFileName in directoryList: # each file in the directory
         currentFilePath = os.path.abspath(currentFileName)
         currentFileSize = os.path.getsize(currentFileName) # get the size
-        directoryData[currentFilePath] = currentFileSize # creating an entry in the dictionary
-        # print("{'path': '" + currentFilePath + "', 'size': " + str(currentFileSize) + '}')
+        directoryDictionary[currentFilePath] = currentFileSize # creating an entry in the dictionary
 
-    for each in directoryData:
-        print("{'path': '" + each + "', 'size': " + str(directoryData[each]) + '}')
+    for p, s in directoryDictionary.items():
+        print("{'path': '" + p + "', 'size': " + str(s) + '}')
         
-
-# printDirectoryData()
-
+printDirectoryData()
 
 
 
@@ -60,8 +57,8 @@ def printDirectoryData3(path='os.getcwd()'):
         directoryData[currentFilePath] = currentFileSize # creating an entry in the dictionary
         # print("{'path': '" + currentFilePath + "', 'size': " + str(currentFileSize) + '}')
 
-    for each in directoryData:
-        print("{'path': '" + each + "', 'size': " + str(directoryData[each]) + '}')
+    for p, s in directoryDictionary.items():
+        print("{'path': '" + p + "', 'size': " + str(s) + '}')
         
 
-printDirectoryData3("/home/ec2-user/")
+# printDirectoryData3("/home/ec2-user/")
