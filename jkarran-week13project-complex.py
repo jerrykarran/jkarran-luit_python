@@ -6,10 +6,10 @@ def printDirectoryData(path=os.path.join(os.getcwd())):
         path = path + '/'
     else:
         currentFileSize = os.path.getsize(path)  
-        lastaccess = os.path.getmtime(path)          # get time file was last accessed
+        lastaccess = os.path.getmtime(path)                     # get time file was last accessed
         filedata = [currentFileSize, lastaccess]                # store data in a list
         
-        directoryDictionary[path] = filedata             # add directory folder into dictionary
+        directoryDictionary[path] = filedata                    # add directory folder into dictionary
     origpath = path                                             # hold value of original path
     recursivePrintDirectory(origpath, path)
     for filepath, data in directoryDictionary.items():
@@ -24,24 +24,24 @@ def recursivePrintDirectory(origpath, path):
             else:
                 fullpathname = path + '/' + currentFileName     # get current filename with a slash in between
             currentFileSize = os.path.getsize(fullpathname)     # get the size
-            lastaccess = os.path.getmtime(fullpathname)          # get time file was last accessed
-            filedata = [currentFileSize, lastaccess]                # store data in a list
+            lastaccess = os.path.getmtime(fullpathname)         # get time file was last accessed
+            filedata = [currentFileSize, lastaccess]            # store data in a list
             
             directoryDictionary[fullpathname] = filedata # creating an entry in the dictionary for this folder
             recursivePrintDirectory(origpath, fullpathname)     # check inside the folder
         elif origpath == path:
             fullpathname = path + currentFileName               # get current filename
             currentFileSize = os.path.getsize(fullpathname)     # get the size
-            lastaccess = os.path.getmtime(fullpathname)          # get time file was last accessed
-            filedata = [currentFileSize, lastaccess]                # store data in a list
+            lastaccess = os.path.getmtime(fullpathname)         # get time file was last accessed
+            filedata = [currentFileSize, lastaccess]            # store data in a list
             
             directoryDictionary[fullpathname] = filedata # creating an entry in the dictionary for file
         else:                                                   # not a directory
             fullpathname = path + '/' + currentFileName         # get current filename with a slash in between
             currentFileSize = os.path.getsize(fullpathname)     # get the size
-            lastaccess = os.path.getmtime(fullpathname)          # get time file was last accessed
-            filedata = [currentFileSize, lastaccess]                # store data in a list
+            lastaccess = os.path.getmtime(fullpathname)         # get time file was last accessed
+            filedata = [currentFileSize, lastaccess]            # store data in a list
             
-            directoryDictionary[fullpathname] = filedata # creating an entry in the dictionary for other folders and items
+            directoryDictionary[fullpathname] = filedata        # creating an entry in the dictionary for other folders and items
         
 printDirectoryData('/home/ec2-user/environment/')
