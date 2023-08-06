@@ -8,10 +8,12 @@ def printDirectoryData(path=os.path.join(os.getcwd())):
     for currentFileName in directoryList:                       # each file in the directory
         fullpath = path + '/' + currentFileName                 # adding the slash between the path and current filename
         currentFileSize = os.path.getsize(fullpath)             # get the size
-        directoryDictionary[fullpath] = currentFileSize         # creating an entry in the dictionary
+        lastaccess = os.path.getmtime(currentFileName)          # get time file was last accessed
+        filedata = [currentFileSize, lastaccess]                # store data in a list
+        directoryDictionary[fullpath] = filedata         # creating an entry in the dictionary
         
-    for p, s in directoryDictionary.items():                    # iterating through the dictionary
-        print("{'path': '" + p + "', 'size': " + str(s) + '}')
+    for filepath, data in directoryDictionary.items():                    # iterating through the dictionary
+        print("{'path': '" + filepath + "', 'size': '" + str(data[0]) + "', 'last accessed': '" + str(data[1])  + "'}")
         
 # printDirectoryData('/home/ec2-user/environment/.c9')
 printDirectoryData()
