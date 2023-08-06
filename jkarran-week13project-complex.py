@@ -5,12 +5,15 @@ def printDirectoryData(path=os.path.join(os.getcwd())):
     if path[-1] != '/':                                         # check if ending slash is missing
         path = path + '/'
     else:
-        currentFileSize = os.path.getsize(path)     
-        directoryDictionary[path] = currentFileSize             # add directory folder into dictionary
+        currentFileSize = os.path.getsize(path)  
+        lastaccess = os.path.getmtime(path)          # get time file was last accessed
+        filedata = [currentFileSize, lastaccess]                # store data in a list
+        
+        directoryDictionary[path] = filedata             # add directory folder into dictionary
     origpath = path                                             # hold value of original path
     recursivePrintDirectory(origpath, path)
-    for p, s in directoryDictionary.items():                    # iterating through the dictionary
-        print("{'path': '" + p + "', 'size': " + str(s) + '}')
+    for filepath, data in directoryDictionary.items():
+        print("{'path': '" + filepath + "', 'size': '" + str(data[0]) + "', 'last accessed': '" + str(data[1])  + "'}")
 
 def recursivePrintDirectory(origpath, path):
     directoryList = os.listdir(path) # create a new list of all files and directories
@@ -21,16 +24,24 @@ def recursivePrintDirectory(origpath, path):
             else:
                 fullpathname = path + '/' + currentFileName     # get current filename with a slash in between
             currentFileSize = os.path.getsize(fullpathname)     # get the size
-
-            directoryDictionary[fullpathname] = currentFileSize # creating an entry in the dictionary for this folder
+            lastaccess = os.path.getmtime(fullpathname)          # get time file was last accessed
+            filedata = [currentFileSize, lastaccess]                # store data in a list
+            
+            directoryDictionary[fullpathname] = filedata # creating an entry in the dictionary for this folder
             recursivePrintDirectory(origpath, fullpathname)     # check inside the folder
         elif origpath == path:
             fullpathname = path + currentFileName               # get current filename
             currentFileSize = os.path.getsize(fullpathname)     # get the size
-            directoryDictionary[fullpathname] = currentFileSize # creating an entry in the dictionary for file
+            lastaccess = os.path.getmtime(fullpathname)          # get time file was last accessed
+            filedata = [currentFileSize, lastaccess]                # store data in a list
+            
+            directoryDictionary[fullpathname] = filedata # creating an entry in the dictionary for file
         else:                                                   # not a directory
             fullpathname = path + '/' + currentFileName         # get current filename with a slash in between
             currentFileSize = os.path.getsize(fullpathname)     # get the size
-            directoryDictionary[fullpathname] = currentFileSize # creating an entry in the dictionary for other folders and items
+            lastaccess = os.path.getmtime(fullpathname)          # get time file was last accessed
+            filedata = [currentFileSize, lastaccess]                # store data in a list
+            
+            directoryDictionary[fullpathname] = filedata # creating an entry in the dictionary for other folders and items
         
 printDirectoryData('/home/ec2-user/environment/')
