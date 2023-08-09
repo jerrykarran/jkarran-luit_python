@@ -2,8 +2,8 @@ import boto3
 
 s3 = boto3.client('s3')
 
-bucket = "jkarran-boto3-080623-1756"
-key = "test_text2.txt"
+bucket = "jkarran-wk14"
+key = "test.txt"
 
 response = s3.put_public_access_block(
     Bucket = bucket,
