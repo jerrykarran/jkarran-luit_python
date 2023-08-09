@@ -3,7 +3,7 @@ import boto3
 s3 = boto3.client('s3')
 
 bucket = "jkarran-wk14"
-key = "test.txt"
+key = "test_text_string.txt"
 
 response = s3.put_public_access_block(
     Bucket = bucket,
@@ -16,7 +16,6 @@ response = s3.put_public_access_block(
     }
 )
 
-
 response = s3.put_bucket_ownership_controls(
     Bucket = bucket,
     OwnershipControls={
@@ -28,8 +27,13 @@ response = s3.put_bucket_ownership_controls(
     }
 )
 
+response = s3.put_bucket_acl(
+    ACL='private',
+    Bucket=bucket
+)
+
 response = s3.put_object_acl(
-            ACL='private', 
+            ACL='public-read', 
             Bucket=bucket,
             Key=key
             )
