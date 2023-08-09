@@ -13,6 +13,6 @@ def printDirectoryData(path='os.getcwd()'):
         directoryDictionary[currentFilePath] = filedata         # creating an entry in the dictionary
 
     for filepath, data in directoryDictionary.items():
-        print("{'path': '" + filepath + "', 'size': '" + str(data[0]) + "', 'last accessed': '" + str(data[1])  + "'}")
+        print("{\n\t'path': '" + filepath + "',\n\t'size': '" + str(data[0]) + "',\n\t'last accessed': '" + str(data[1])  + "'\n}\n")
         
 printDirectoryData()

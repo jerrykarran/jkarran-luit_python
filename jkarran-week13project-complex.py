@@ -13,7 +13,7 @@ def printDirectoryData(path=os.path.join(os.getcwd())):
     origpath = path                                             # hold value of original path
     recursivePrintDirectory(origpath, path)
     for filepath, data in directoryDictionary.items():
-        print("{'path': '" + filepath + "', 'size': '" + str(data[0]) + "', 'last accessed': '" + str(data[1])  + "'}")
+        print("{\n\t'path': '" + filepath + "',\n\t'size': '" + str(data[0]) + "',\n\t'last accessed': '" + str(data[1])  + "'\n}\n")
 
 def recursivePrintDirectory(origpath, path):
     directoryList = os.listdir(path) # create a new list of all files and directories

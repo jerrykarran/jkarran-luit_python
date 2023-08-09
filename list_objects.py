@@ -14,13 +14,16 @@ def list_object_keys(client, bucket, prefix=""):
     response = client.list_objects_v2(Bucket=bucket, Prefix=prefix)
     for content in response['Contents']:
         keys.append(content["Key"])
-            
     return keys
 
-s3 = boto3.client('s3')
-
-extension = ".jpg"
-bucket = "jkbucketdevops"
-
-response = list_object_keys(s3, bucket, "department/")
-print(response)
+if __name__ == '__main__':
+    s3 = boto3.client('s3')
+    
+    extension = ".jpg"
+    bucket = "jkbucketdevops"
+    
+    response = list_object_keys(s3, bucket, "department/")
+    print(response)
+    
+    response = filter_objects_extension(s3, bucket, "/")
+    print(response)
