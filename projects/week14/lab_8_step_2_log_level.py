@@ -2,6 +2,9 @@
 import logging
 import json
 
+# Set the log level in the basic configuration.  This means we will capture all our log entries and not just those at Warning or above.
+logging.basicConfig(filename='example.log',level=logging.DEBUG)
+
 # This uses a json string as an input
 json_string = """
 {
